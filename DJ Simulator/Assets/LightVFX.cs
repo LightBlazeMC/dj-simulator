@@ -5,9 +5,10 @@ using UnityEngine;
 public class LightVFX : MonoBehaviour
 {
     public Light lightToChange; // Reference to the Light component
-    public float colorMultiplier = 10.0f; // Multiplier to adjust color intensity
+    public float colorMultiplier = 22.0f; // Multiplier to adjust color intensity
     public AudioSource audioSource;
     private float[] samples = new float[64]; // Array to hold audio spectrum data
+    public float lightColor;    //var to change color as time goes
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,8 @@ public class LightVFX : MonoBehaviour
         {
             audioSource.GetSpectrumData(samples, 0, FFTWindow.Rectangular); // Get audio spectrum data
             float intensity = GetAverage(samples) * colorMultiplier; // Calculate intensity based on spectrum data
-
-            Color newColor = new Color(intensity, 0, intensity);
+            lightColor = 0;
+            Color newColor = new Color(intensity, lightColor, intensity);
             lightToChange.color = newColor;
         }
     }
