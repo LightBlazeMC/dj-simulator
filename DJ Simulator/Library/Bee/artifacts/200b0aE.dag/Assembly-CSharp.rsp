@@ -376,6 +376,8 @@
 "Assets/Scripts/discoball.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LightVFX.cs"
+"Assets/Scripts/npc_pos_fix.cs"
+"Assets/Scripts/SpawnNPC.cs"
 "Assets/Scripts/speed_down.cs"
 "Assets/Scripts/speed_reset.cs"
 "Assets/Scripts/speed_up.cs"
