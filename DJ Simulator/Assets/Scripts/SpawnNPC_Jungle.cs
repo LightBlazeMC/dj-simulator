@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnNPC : MonoBehaviour
+public class SpawnNPC_Jungle : MonoBehaviour
 {
 
     public GameObject npc;
     private int numOfClones = 0;
+    public int JungleNPC = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         numOfClones = Random.Range(2,8);
-        Debug.Log(numOfClones + " clones will spawn.");
+        Debug.Log(numOfClones + " Jungle clones will spawn.");
 
         for(int i=0; i<numOfClones; i++)
             {
@@ -24,6 +25,6 @@ public class SpawnNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        JungleNPC = numOfClones;
     }
 }

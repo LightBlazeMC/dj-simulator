@@ -375,12 +375,17 @@
 "Assets/Scripts/deck_platter.cs"
 "Assets/Scripts/discoball.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/house_stats.cs"
+"Assets/Scripts/jungle_stats.cs"
 "Assets/Scripts/LightVFX.cs"
 "Assets/Scripts/npc_pos_fix.cs"
-"Assets/Scripts/SpawnNPC.cs"
+"Assets/Scripts/SpawnNPC_House.cs"
+"Assets/Scripts/SpawnNPC_Jungle.cs"
+"Assets/Scripts/SpawnNPC_Techno.cs"
 "Assets/Scripts/speed_down.cs"
 "Assets/Scripts/speed_reset.cs"
 "Assets/Scripts/speed_up.cs"
+"Assets/Scripts/techno_stats.cs"
 "Assets/Scripts/ui.cs"
 -langversion:9.0
 
