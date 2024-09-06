@@ -371,6 +371,7 @@
 "Assets/Mini First Person Controller/Scripts/Components/Zoom.cs"
 "Assets/Mini First Person Controller/Scripts/FirstPersonLook.cs"
 "Assets/Mini First Person Controller/Scripts/FirstPersonMovement.cs"
+"Assets/Scripts/activateTrackSelect.cs"
 "Assets/Scripts/deck_btn.cs"
 "Assets/Scripts/deck_platter.cs"
 "Assets/Scripts/discoball.cs"
@@ -387,6 +388,7 @@
 "Assets/Scripts/speed_up.cs"
 "Assets/Scripts/techno_stats.cs"
 "Assets/Scripts/ui.cs"
+"Assets/Scripts/ui_controller.cs"
 -langversion:9.0
 
 /deterministic
