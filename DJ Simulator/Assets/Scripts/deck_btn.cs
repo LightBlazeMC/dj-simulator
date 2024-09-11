@@ -6,9 +6,11 @@ public class deck_btn : MonoBehaviour
     public AudioSource targetAudioSource;
 
     // Flag to check if the audio has been played at least once
-    private bool hasPlayed = false;
+    public bool hasPlayed = false;
 
     public GameObject targetObject;
+
+    //public held_track scriptA;
 
     void Start()
     {

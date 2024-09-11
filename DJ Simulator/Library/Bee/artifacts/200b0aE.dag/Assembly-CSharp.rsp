@@ -381,6 +381,7 @@
 "Assets/Scripts/house_stats.cs"
 "Assets/Scripts/jungle_stats.cs"
 "Assets/Scripts/LightVFX.cs"
+"Assets/Scripts/LoadDeck.cs"
 "Assets/Scripts/npc_pos_fix.cs"
 "Assets/Scripts/SpawnNPC_House.cs"
 "Assets/Scripts/SpawnNPC_Jungle.cs"

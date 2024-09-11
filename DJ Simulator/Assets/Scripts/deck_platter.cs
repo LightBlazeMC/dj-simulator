@@ -4,7 +4,7 @@ public class deck_platter : MonoBehaviour
 {
     // Reference to the AudioSource on another object
     public AudioSource targetAudioSource;
-
+    public LoadDeck scriptA;
     // Rotation speed
     public float rotationSpeed = 50f;
 
@@ -17,4 +17,11 @@ public class deck_platter : MonoBehaviour
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
         }
     }
+
+    void OnMouseDown()
+    {
+        scriptA.PlayDeck();
+    }
+
+
 }
