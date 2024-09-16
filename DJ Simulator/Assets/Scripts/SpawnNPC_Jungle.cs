@@ -17,7 +17,7 @@ public class SpawnNPC_Jungle : MonoBehaviour
 
         for(int i=0; i<numOfClones; i++)
             {
-                Vector3 randomSpawnPos = new Vector3(Random.Range(-8, 8), 1.0f, Random.Range(-8, 8));
+                Vector3 randomSpawnPos = new Vector3(Random.Range(-8, 8), 0.5f, Random.Range(-8, 8));
                 Instantiate(npc, randomSpawnPos, Quaternion.identity);
             }
     }
