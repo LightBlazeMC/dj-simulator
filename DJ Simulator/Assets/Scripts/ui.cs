@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;  // Make sure to include this namespace for TextMeshPro
+using TMPro;
 
 public class ui : MonoBehaviour
 {

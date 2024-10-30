@@ -12,14 +12,7 @@ public class SpawnNPC_Techno : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        numOfClones = Random.Range(2,8);
-        Debug.Log(numOfClones + " Techno clones will spawn.");
-
-        for(int i=0; i<numOfClones; i++)
-            {
-                Vector3 randomSpawnPos = new Vector3(Random.Range(-8, 8), 0.5f, Random.Range(-8, 8));
-                Instantiate(npc, randomSpawnPos, Quaternion.identity);
-            }
+        generateNPC();
     }
 
     // Update is called once per frame
@@ -27,4 +20,18 @@ public class SpawnNPC_Techno : MonoBehaviour
     {
         TechnoNPC = numOfClones;
     }
+
+    public void generateNPC()
+    {
+        // Generate NPCs
+        numOfClones = Random.Range(2, 8);
+        Debug.Log(numOfClones + " Techno clones will spawn.");
+
+        for (int i = 0; i < numOfClones; i++)
+        {
+            Vector3 randomSpawnPos = new Vector3(Random.Range(-8, 8), 0.5f, Random.Range(-8, 8));
+            Instantiate(npc, randomSpawnPos, Quaternion.identity);
+        }
+    }
+
 }

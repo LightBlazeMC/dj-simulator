@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
 
-public class techno_stats: MonoBehaviour
+public class techno_stats : MonoBehaviour
 {
-    public SpawnNPC_Techno scriptA;
-    public TMP_Text techno_stat_text; // The TextMeshPro object to display
+  public SpawnNPC_Techno scriptA;
+  public TMP_Text techno_stat_text; // The TextMeshPro object to display
 
   void Start()
   {

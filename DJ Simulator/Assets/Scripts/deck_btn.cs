@@ -9,6 +9,7 @@ public class deck_btn : MonoBehaviour
     public bool hasPlayed = false;
 
     public GameObject targetObject;
+    public bool isPlaying = false;
 
     //public held_track scriptA;
 
@@ -32,30 +33,35 @@ public class deck_btn : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-            if (hit.transform.gameObject == targetObject)
+                if (hit.transform.gameObject == targetObject)
                 {
-            if (targetAudioSource != null)
-            {
-                // If the audio hasn't played yet, play it for the first time
-                if (!hasPlayed)
-                {
-                    targetAudioSource.Play();
-                    hasPlayed = true; // Mark as played
-                }
-                // If the audio is currently playing, pause it
-                else if (targetAudioSource.isPlaying)
-                {
-                    targetAudioSource.Pause();
-                }
-                // If the audio is paused, resume playback
-                else if (!targetAudioSource.isPlaying && targetAudioSource.time > 0f)
-                {
-                    targetAudioSource.UnPause();
-                }
-            }
+                    if (targetAudioSource != null)
+                    {
+                        // If the audio hasn't played yet, play it for the first time
+                        if (!hasPlayed)
+                        {
+                            targetAudioSource.Play();
+                            hasPlayed = true; // Mark as played
+                            isPlaying = true;
+                        }
+                        // If the audio is currently playing, pause it
+                        else if (targetAudioSource.isPlaying)
+                        {
+                            targetAudioSource.Pause();
+                            isPlaying = false;
+                        }
+                        // If the audio is paused, resume playback
+                        else if (!targetAudioSource.isPlaying && targetAudioSource.time > 0f)
+                        {
+                            targetAudioSource.UnPause();
+                            isPlaying = true;
+                        }
+                    }
 
                 }
             }
         }
+
+        Debug.Log("isPlaying: " + isPlaying);
     }
 }
