@@ -8,7 +8,7 @@ public class EquipTrack : MonoBehaviour
     public held_track scriptA;
     public string TrackName;
     public int setTrackID;
-    public string SetgenreTag;
+    public static string SetgenreTag;
 
     // Start is called before the first frame update
     void Start()

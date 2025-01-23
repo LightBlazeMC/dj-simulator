@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 697.5
+    y: 613.5
     width: 968.5
     height: 542.5
   m_SerializedDataModeController:
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 103
+    y: 19
     width: 968.5
     height: 573.5
   m_SerializedDataModeController:
@@ -1106,8 +1106,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 969.5
-    y: 103
+    x: 970.5
+    y: 19
     width: 289
     height: 1137
   m_SerializedDataModeController:
@@ -1124,8 +1124,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: aa7e0000
-      m_LastClickedID: 32426
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: fafaffff08800000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -1172,8 +1172,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1260.5
-    y: 103
+    x: 1261.5
+    y: 19
     width: 283.5
     height: 1137
   m_SerializedDataModeController:
@@ -1216,7 +1216,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 8ae50000
     m_LastClickedID: 58762
-    m_ExpandedIDs: ffffffff00000000468000006485000066850000688500006a8500006c8500006e85000070850000728500007485000076850000788500007a8500007c8500007e85000080850000828500008485000086850000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1245,7 +1245,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000468000006485000066850000688500006a8500006c8500006e85000070850000728500007485000076850000788500007a8500007c8500007e85000080850000828500008485000086850000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1324,8 +1324,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1546
-    y: 103
+    x: 1547
+    y: 19
     width: 509
     height: 1137
   m_SerializedDataModeController:

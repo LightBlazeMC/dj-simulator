@@ -16,7 +16,7 @@ public class npcManager : MonoBehaviour
     int b;
     int c;
 
-    public string popularGenre;
+    public static string popularGenre;
 
     // Start is called before the first frame update
     void Start()
