@@ -4,7 +4,9 @@
 #
 /[Ll]ibrary/
 /[Tt]emp/
-/[Oo]bj/
+/DJ_Simulator/Library/
+/DJ_Simulator/Temp/
+/DJ_Simulator/Logs/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
