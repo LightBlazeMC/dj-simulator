@@ -9,7 +9,7 @@ public class deck_btn : MonoBehaviour
     public bool hasPlayed = false;
 
     public GameObject targetObject;
-    public bool isPlaying = false;
+    public static bool isPlaying = false;
 
     //public held_track scriptA;
 

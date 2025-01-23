@@ -17,7 +17,7 @@ public class npcAnimManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (npcType == npcManager.popularGenre)
+        if ((npcType == npcManager.popularGenre) && deck_btn.isPlaying)
         {
             anim.SetBool("WantsToDance", true);
             anim.SetBool("WantsToIdle", false);

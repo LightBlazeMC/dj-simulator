@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreText;  // Reference to the TextMeshPro text component
     public TMP_Text pointsListText;
-    public deck_btn scriptA;
+    //public deck_btn scriptA;
 
     public held_track held_Track;
 
@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator AwardPlayTrackPointsCoroutine()
     {
-        while (scriptA.isPlaying)
+        while (deck_btn.isPlaying)
         {
             if (canAward == true)
             {
@@ -44,7 +44,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator AwardGenrePointsCoroutine()
     {
-        while (scriptA.isPlaying)
+        while (deck_btn.isPlaying)
         {
             if (canAwardGenre == true)
             {
