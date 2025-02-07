@@ -7,13 +7,11 @@ public class LoadDeck : MonoBehaviour
     public List<AudioClip> audioClips;      // List to hold multiple audio clips
 
     private int currentClipIndex = 0;       // Index to track which clip to play
-
-    public held_track scriptA;
     public deck_btn scriptB;
 
     void Update()
     {
-        currentClipIndex = scriptA.TrackID;
+        currentClipIndex = held_track.TrackID;
     }
 
     public void PlayDeck()
@@ -21,7 +19,7 @@ public class LoadDeck : MonoBehaviour
         // Check if there are any audio clips assigned
         if (audioClips.Count > 0)
         {
-            currentClipIndex = scriptA.TrackID;
+            currentClipIndex = held_track.TrackID;
             scriptB.hasPlayed = false;
             // Play the first clip
             PlayClip(currentClipIndex);
@@ -37,7 +35,7 @@ public class LoadDeck : MonoBehaviour
     {
         if (index >= 0 && index < audioClips.Count)
         {
-            currentClipIndex = scriptA.TrackID;
+            currentClipIndex = held_track.TrackID;
             audioSource.clip = audioClips[index];
             //audioSource.Play();
             Debug.Log("current clip index: " + currentClipIndex);

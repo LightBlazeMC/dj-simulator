@@ -3,11 +3,11 @@ using TMPro;
 
 public class held_track : MonoBehaviour
 {
-    public string HeldTrack;
-    public int TrackID;
+    public static string HeldTrack;
+    public static int TrackID;
     //public SpawnNPC_Jungle scriptA;
     public TMP_Text held_track_text; // The TextMeshPro object to display
-    public string genreTag;
+    public static string genreTag;
 
   void Start()
   {

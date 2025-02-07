@@ -3717,7 +3717,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3341a5f782c646858aa47905aae184a, type: 3}
   - {fileID: 8300000, guid: 80ea04532ab594bc3a57fcbbf29189b2, type: 3}
   - {fileID: 8300000, guid: 4e3c6cfad5e3e4bd592c91d72016e6a7, type: 3}
-  scriptA: {fileID: 2031174823}
   scriptB: {fileID: 1006216222}
 --- !u!1 &705507993
 GameObject:
@@ -3863,10 +3862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f3109702a004010adef4c274a51da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptA: {fileID: 2031174823}
   TrackName: Don't Stop (Tempo Remix) by Akudama
   setTrackID: 3
-  SetgenreTag: TECHNO
+  SetgenreTag: Techno
 --- !u!114 &713993657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4012,10 +4010,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f3109702a004010adef4c274a51da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptA: {fileID: 2031174823}
   TrackName: Techno Power by DASQ
   setTrackID: 4
-  SetgenreTag: TECHNO
+  SetgenreTag: Techno
 --- !u!114 &722043728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,7 +4616,6 @@ MonoBehaviour:
   scriptTechnoStats: {fileID: 2031174820}
   scriptHouseStats: {fileID: 2031174821}
   scriptJungleStats: {fileID: 2031174822}
-  popularGenre: 
 --- !u!1 &992849841 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c478b4a385c704915bd26ba5e65419c7, type: 3}
@@ -5073,7 +5069,6 @@ MonoBehaviour:
   targetAudioSource: {fileID: 701747574}
   hasPlayed: 0
   targetObject: {fileID: 1006216217}
-  isPlaying: 0
 --- !u!43 &1016189006
 Mesh:
   m_ObjectHideFlags: 0
@@ -5640,10 +5635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f3109702a004010adef4c274a51da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptA: {fileID: 2031174823}
   TrackName: Populationcull by Justin Tuijl
   setTrackID: 1
-  SetgenreTag: TECHNO
+  SetgenreTag: Techno
 --- !u!43 &1271233800
 Mesh:
   m_ObjectHideFlags: 0
@@ -9443,8 +9437,6 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 761892986}
   pointsListText: {fileID: 1577963168}
-  scriptA: {fileID: 1006216222}
-  held_Track: {fileID: 2031174823}
   npcManager: {fileID: 867007744}
 --- !u!1 &1935559823
 GameObject:
@@ -10526,10 +10518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99921ed4a2864462b0a27f1bdbfb808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeldTrack: 
-  TrackID: 0
   held_track_text: {fileID: 302778711}
-  genreTag: 
 --- !u!1 &2041228239
 GameObject:
   m_ObjectHideFlags: 0
@@ -10688,10 +10677,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f3109702a004010adef4c274a51da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptA: {fileID: 2031174823}
   TrackName: Dia de Dios by LightBlazeMC
   setTrackID: 2
-  SetgenreTag: TECHNO
+  SetgenreTag: Techno
 --- !u!114 &2044973123
 MonoBehaviour:
   m_ObjectHideFlags: 0

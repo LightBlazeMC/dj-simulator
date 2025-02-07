@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class EquipTrack : MonoBehaviour
 {
-
-    public held_track scriptA;
-    public string TrackName;
-    public int setTrackID;
-    public static string SetgenreTag;
+    [SerializeField] private string TrackName;
+    [SerializeField] private int setTrackID;
+    [SerializeField] private string SetgenreTag;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +22,8 @@ public class EquipTrack : MonoBehaviour
 
     public void SetTitle()
     {
-        scriptA.HeldTrack = TrackName;
-        scriptA.TrackID = setTrackID;
-        scriptA.genreTag = SetgenreTag;
+        held_track.HeldTrack = TrackName;
+        held_track.TrackID = setTrackID;
+        held_track.genreTag = SetgenreTag;
     }
 }

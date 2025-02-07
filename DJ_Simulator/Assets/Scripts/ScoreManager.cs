@@ -11,8 +11,6 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text pointsListText;
     //public deck_btn scriptA;
 
-    public held_track held_Track;
-
     public npcManager npcManager;
 
     bool canAward = true;
@@ -80,16 +78,16 @@ public class ScoreManager : MonoBehaviour
     {
         StartCoroutine(AwardPlayTrackPointsCoroutine());
 
-        if (npcManager.popularGenre == "Techno" && held_Track.genreTag == "TECHNO")
+        if (npcManager.popularGenre == "Techno" && held_track.genreTag == "Techno")
         {
             StartCoroutine(AwardGenrePointsCoroutine());
         }
 
-        if (npcManager.popularGenre == "House" && held_Track.genreTag == "HOUSE")
+        if (npcManager.popularGenre == "House" && held_track.genreTag == "House")
         {
             StartCoroutine(AwardGenrePointsCoroutine());
         }
-        if (npcManager.popularGenre == "Jungle" && held_Track.genreTag == "JUNGLE")
+        if (npcManager.popularGenre == "Jungle" && held_track.genreTag == "Jungle")
         {
             StartCoroutine(AwardGenrePointsCoroutine());
         }
