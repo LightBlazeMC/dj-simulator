@@ -18,7 +18,7 @@ public class SpawnNPC_House : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HouseNPC = numOfClones;
+        //HouseNPC = numOfClones;
     }
 
     public void generateNPC()
@@ -27,12 +27,27 @@ public class SpawnNPC_House : MonoBehaviour
         numOfClones = Random.Range(2, 8);
         Debug.Log(numOfClones + " House clones will spawn.");
 
+        // Reset counter first
+        HouseNPC = 0;
+
         for (int i = 0; i < numOfClones; i++)
         {
             Vector3 randomSpawnPos = new Vector3(Random.Range(-8, 8), 0.5f, Random.Range(-8, 8));
-            Instantiate(npc, randomSpawnPos, Quaternion.identity);
+            GameObject newNPC = Instantiate(npc, randomSpawnPos, Quaternion.identity);
 
+            // Increment counter once per NPC
+            HouseNPC++;
         }
+    }
+
+    public void generateSingleNPC()
+    {
+        // Generate NPC
+        Debug.Log("1 House clone will spawn.");
+
+        Vector3 randomSpawnPos = new Vector3(Random.Range(-8, 8), 0.5f, Random.Range(-8, 8));
+        Instantiate(npc, randomSpawnPos, Quaternion.identity);
+        HouseNPC++;
     }
 
 

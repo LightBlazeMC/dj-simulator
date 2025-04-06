@@ -17,6 +17,7 @@ public class npcManager : MonoBehaviour
     int c;
 
     public static string popularGenre;
+    private bool routineRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,9 @@ public class npcManager : MonoBehaviour
         c = scriptJungle.JungleNPC;
         findPopularGenre();
         noDuplicates();
+
+        // Start the random NPC manipulation coroutine
+        StartCoroutine(RandomNPCManipulation());
     }
 
     // Update is called once per frame
@@ -36,8 +40,6 @@ public class npcManager : MonoBehaviour
         c = scriptJungle.JungleNPC;
         findPopularGenre();
         noDuplicates();
-
-
     }
 
     void noDuplicates()
@@ -50,6 +52,7 @@ public class npcManager : MonoBehaviour
             scriptTechnoStats.techno_stat_text.SetText("Techno: Adjusting NPC numbers...");
             scriptHouseStats.house_stat_text.SetText("House: Adjusting NPC numbers...");
             scriptJungleStats.jungle_stat_text.SetText("Jungle: Adjusting NPC numbers...");
+
             GameObject[] npcs = GameObject.FindGameObjectsWithTag("npc");
 
             foreach (GameObject npc in npcs)
@@ -86,5 +89,112 @@ public class npcManager : MonoBehaviour
         }
 
         Debug.Log("The most popular genre right now is " + popularGenre + " with a value of: " + highest);
+    }
+
+    // Coroutine to randomly create or destroy NPCs
+    IEnumerator RandomNPCManipulation()
+    {
+        routineRunning = true;
+
+        while (routineRunning)
+        {
+            // Wait for random time between 30 and 90 seconds
+            float waitTime = Random.Range(30f, 90f);
+            yield return new WaitForSeconds(waitTime);
+
+            // Decide to either create or destroy an NPC
+            bool createNPC = Random.value > 0.5f;
+
+            if (createNPC)
+            {
+                // Create a random NPC type
+                int npcType = Random.Range(0, 3);
+                switch (npcType)
+                {
+                    case 0:
+                        scriptTechno.generateSingleNPC();
+                        //scriptTechno.TechnoNPC++;
+                        Debug.Log("Randomly created a Techno NPC. New count: " + scriptTechno.TechnoNPC);
+                        break;
+                    case 1:
+                        scriptHouse.generateSingleNPC();
+                        //scriptHouse.HouseNPC++;
+                        Debug.Log("Randomly created a House NPC. New count: " + scriptHouse.HouseNPC);
+                        break;
+                    case 2:
+                        scriptJungle.generateSingleNPC();
+                        //scriptJungle.JungleNPC++;
+                        Debug.Log("Randomly created a Jungle NPC. New count: " + scriptJungle.JungleNPC);
+                        break;
+                }
+            }
+            else
+            {
+                // Find all NPCs
+                GameObject[] npcs = GameObject.FindGameObjectsWithTag("npc");
+
+                if (npcs.Length > 0)
+                {
+                    // Choose a random NPC to destroy
+                    int npcIndex = Random.Range(0, npcs.Length);
+                    GameObject npcToDestroy = npcs[npcIndex];
+
+                    // Check NPC type and update counter
+                    npcAnimManager npcAnim = npcToDestroy.GetComponent<npcAnimManager>();
+
+                    if (npcAnim != null)
+                    {
+                        switch (npcAnim.npcType.ToLower())
+                        {
+                            case "techno":
+                                if (scriptTechno.TechnoNPC > 0)
+                                    scriptTechno.TechnoNPC--;
+                                Debug.Log("Randomly removed a Techno NPC. New count: " + scriptTechno.TechnoNPC);
+                                break;
+                            case "house":
+                                if (scriptHouse.HouseNPC > 0)
+                                    scriptHouse.HouseNPC--;
+                                Debug.Log("Randomly removed a House NPC. New count: " + scriptHouse.HouseNPC);
+                                break;
+                            case "jungle":
+                                if (scriptJungle.JungleNPC > 0)
+                                    scriptJungle.JungleNPC--;
+                                Debug.Log("Randomly removed a Jungle NPC. New count: " + scriptJungle.JungleNPC);
+                                break;
+                        }
+                    }
+
+                    // Destroy the NPC
+                    Destroy(npcToDestroy);
+                }
+                else
+                {
+                    Debug.Log("No NPCs to destroy, creating one instead");
+                    // Create a random NPC if there are none to destroy
+                    int npcType = Random.Range(0, 3);
+                    switch (npcType)
+                    {
+                        case 0:
+                            scriptTechno.generateSingleNPC();
+                            //scriptTechno.TechnoNPC++;
+                            break;
+                        case 1:
+                            scriptHouse.generateSingleNPC();
+                            //scriptHouse.HouseNPC++;
+                            break;
+                        case 2:
+                            scriptJungle.generateSingleNPC();
+                            //scriptJungle.JungleNPC++;
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    // Call this method when you want to stop the random manipulation
+    public void StopRandomManipulation()
+    {
+        routineRunning = false;
     }
 }
