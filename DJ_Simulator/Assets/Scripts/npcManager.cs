@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class npcManager : MonoBehaviour
@@ -17,14 +18,6 @@ public class npcManager : MonoBehaviour
 
     public static string popularGenre;
     private bool routineRunning = false;
-
-    public Transform despawnPoint; // Assign this in the Inspector to the position NPCs should walk to
-
-    // Lists to track NPCs walking to despawn
-    private List<GameObject> npcsWalkingToDespawn = new List<GameObject>();
-
-    // Reference to all NPCs in the scene
-    private List<GameObject> allNPCs = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -47,32 +40,12 @@ public class npcManager : MonoBehaviour
         c = scriptJungle.JungleNPC;
         findPopularGenre();
         noDuplicates();
-
-        // Check for NPCs that have reached the despawn point
-        CheckForDespawningNPCs();
-    }
-
-    // Called by NPC spawner scripts to register new NPCs
-    public void RegisterNPC(GameObject npc)
-    {
-        if (!allNPCs.Contains(npc))
-        {
-            allNPCs.Add(npc);
-        }
-    }
-
-    // Called when an NPC is destroyed to remove it from tracking
-    public void UnregisterNPC(GameObject npc)
-    {
-        if (allNPCs.Contains(npc))
-        {
-            allNPCs.Remove(npc);
-        }
     }
 
     void noDuplicates()
     {
         // Check for duplicate NPCs
+        Debug.Log("Checking for duplicate NPCs...");
         if (a == b || a == c || b == c)
         {
             Debug.Log("Duplicate NPCs found.");
@@ -80,25 +53,11 @@ public class npcManager : MonoBehaviour
             scriptHouseStats.house_stat_text.SetText("House: Adjusting NPC numbers...");
             scriptJungleStats.jungle_stat_text.SetText("Jungle: Adjusting NPC numbers...");
 
-            // Instead of using tags, use our tracked list of NPCs
-            foreach (GameObject npc in new List<GameObject>(allNPCs))
+            GameObject[] npcs = GameObject.FindGameObjectsWithTag("npc");
+
+            foreach (GameObject npc in npcs)
             {
-                // Check NPC type and update counter
-                npcAnimManager npcAnim = npc.GetComponent<npcAnimManager>();
-
-                if (npcAnim != null)
-                {
-                    // Add to list of NPCs walking to despawn
-                    npcsWalkingToDespawn.Add(npc);
-
-                    // Tell the NPC to walk to the despawn point
-                    npcAnim.WalkToPositionAndDespawn(despawnPoint.position);
-                }
-                else
-                {
-                    // If there's no animator, just destroy it immediately
-                    DestroyNPC(npc);
-                }
+                Destroy(npc);
             }
 
             // Clear the list of clones
@@ -128,6 +87,8 @@ public class npcManager : MonoBehaviour
         {
             popularGenre = "Jungle";
         }
+
+        Debug.Log("The most popular genre right now is " + popularGenre + " with a value of: " + highest);
     }
 
     // Coroutine to randomly create or destroy NPCs
@@ -138,7 +99,7 @@ public class npcManager : MonoBehaviour
         while (routineRunning)
         {
             // Wait for random time between 30 and 90 seconds
-            float waitTime = Random.Range(3f, 9f);
+            float waitTime = Random.Range(30f, 90f);
             yield return new WaitForSeconds(waitTime);
 
             // Decide to either create or destroy an NPC
@@ -152,45 +113,59 @@ public class npcManager : MonoBehaviour
                 {
                     case 0:
                         scriptTechno.generateSingleNPC();
+                        //scriptTechno.TechnoNPC++;
                         Debug.Log("Randomly created a Techno NPC. New count: " + scriptTechno.TechnoNPC);
                         break;
                     case 1:
                         scriptHouse.generateSingleNPC();
+                        //scriptHouse.HouseNPC++;
                         Debug.Log("Randomly created a House NPC. New count: " + scriptHouse.HouseNPC);
                         break;
                     case 2:
                         scriptJungle.generateSingleNPC();
+                        //scriptJungle.JungleNPC++;
                         Debug.Log("Randomly created a Jungle NPC. New count: " + scriptJungle.JungleNPC);
                         break;
                 }
             }
             else
             {
-                // Use our tracked list instead of FindGameObjectsWithTag
-                if (allNPCs.Count > 0)
+                // Find all NPCs
+                GameObject[] npcs = GameObject.FindGameObjectsWithTag("npc");
+
+                if (npcs.Length > 0)
                 {
                     // Choose a random NPC to destroy
-                    int npcIndex = Random.Range(0, allNPCs.Count);
-                    GameObject npcToDestroy = allNPCs[npcIndex];
+                    int npcIndex = Random.Range(0, npcs.Length);
+                    GameObject npcToDestroy = npcs[npcIndex];
 
                     // Check NPC type and update counter
                     npcAnimManager npcAnim = npcToDestroy.GetComponent<npcAnimManager>();
 
                     if (npcAnim != null)
                     {
-                        // Add to list of NPCs walking to despawn
-                        npcsWalkingToDespawn.Add(npcToDestroy);
-
-                        // Tell the NPC to walk to the despawn point
-                        npcAnim.WalkToPositionAndDespawn(despawnPoint.position);
-
-                        Debug.Log("NPC is walking to despawn point: " + npcAnim.npcType);
+                        switch (npcAnim.npcType.ToLower())
+                        {
+                            case "techno":
+                                if (scriptTechno.TechnoNPC > 0)
+                                    scriptTechno.TechnoNPC--;
+                                Debug.Log("Randomly removed a Techno NPC. New count: " + scriptTechno.TechnoNPC);
+                                break;
+                            case "house":
+                                if (scriptHouse.HouseNPC > 0)
+                                    scriptHouse.HouseNPC--;
+                                Debug.Log("Randomly removed a House NPC. New count: " + scriptHouse.HouseNPC);
+                                break;
+                            case "jungle":
+                                if (scriptJungle.JungleNPC > 0)
+                                    scriptJungle.JungleNPC--;
+                                Debug.Log("Randomly removed a Jungle NPC. New count: " + scriptJungle.JungleNPC);
+                                break;
+                        }
                     }
-                    else
-                    {
-                        // If there's no animator, just destroy it immediately
-                        DestroyNPC(npcToDestroy);
-                    }
+
+                    // Destroy the NPC
+                    Destroy(npcToDestroy);
                 }
                 else
                 {
@@ -201,110 +176,20 @@ public class npcManager : MonoBehaviour
                     {
                         case 0:
                             scriptTechno.generateSingleNPC();
+                            //scriptTechno.TechnoNPC++;
                             break;
                         case 1:
                             scriptHouse.generateSingleNPC();
+                            //scriptHouse.HouseNPC++;
                             break;
                         case 2:
                             scriptJungle.generateSingleNPC();
+                            //scriptJungle.JungleNPC++;
                             break;
                     }
                 }
             }
         }
-    }
-
-    private void CheckForDespawningNPCs()
-    {
-        // Check for NPCs that have reached the despawn point
-        List<GameObject> npcsToRemove = new List<GameObject>();
-
-        foreach (var npc in npcsWalkingToDespawn)
-        {
-            if (npc == null)
-            {
-                npcsToRemove.Add(npc);
-                continue;
-            }
-
-            // Check if the NPC has reached the despawn point
-            float distanceToDespawn = Vector3.Distance(npc.transform.position, despawnPoint.position);
-            if (distanceToDespawn < 0.5f)
-            {
-                DestroyNPC(npc);
-                npcsToRemove.Add(npc);
-            }
-        }
-
-        // Remove entries for NPCs that have been destroyed
-        foreach (var npc in npcsToRemove)
-        {
-            if (npcsWalkingToDespawn.Contains(npc))
-            {
-                npcsWalkingToDespawn.Remove(npc);
-            }
-        }
-    }
-
-    // Called when an NPC reaches the despawn point
-    public void OnReachedDespawnPoint(GameObject npc)
-    {
-        Debug.Log("NPC reached despawn point: " + npc.name);
-
-        if (npcsWalkingToDespawn.Contains(npc))
-        {
-            DestroyNPC(npc);
-            npcsWalkingToDespawn.Remove(npc);
-        }
-        else
-        {
-            // Even if it's not in our list, destroy it anyway
-            DestroyNPC(npc);
-        }
-    }
-
-    private void DestroyNPC(GameObject npc)
-    {
-        // Get the NPC type before destroying
-        npcAnimManager npcAnim = npc.GetComponent<npcAnimManager>();
-        string npcType = null;
-
-        if (npcAnim != null)
-        {
-            npcType = npcAnim.npcType.ToLower();
-        }
-
-        // Update counters based on NPC type
-        if (npcType != null)
-        {
-            switch (npcType)
-            {
-                case "techno":
-                    if (scriptTechno.TechnoNPC > 0)
-                        scriptTechno.TechnoNPC--;
-                    Debug.Log("Destroyed a Techno NPC. New count: " + scriptTechno.TechnoNPC);
-                    break;
-                case "house":
-                    if (scriptHouse.HouseNPC > 0)
-                        scriptHouse.HouseNPC--;
-                    Debug.Log("Destroyed a House NPC. New count: " + scriptHouse.HouseNPC);
-                    break;
-                case "jungle":
-                    if (scriptJungle.JungleNPC > 0)
-                        scriptJungle.JungleNPC--;
-                    Debug.Log("Destroyed a Jungle NPC. New count: " + scriptJungle.JungleNPC);
-                    break;
-            }
-        }
-
-        // Remove from our tracking list
-        if (allNPCs.Contains(npc))
-        {
-            allNPCs.Remove(npc);
-        }
-
-        // Destroy the NPC
-        Destroy(npc);
     }
 
     // Call this method when you want to stop the random manipulation
