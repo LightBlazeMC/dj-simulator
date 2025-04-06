@@ -67,7 +67,7 @@ public class npcAnimManager : MonoBehaviour
         isMoving = false;
 
         // Wait for a random time before starting to move
-        float waitBeforeMovingTime = Random.Range(1f, 15f);
+        float waitBeforeMovingTime = Random.Range(1f, 13f);
         Debug.Log("NPC will display walking animation for " + waitBeforeMovingTime + " seconds before moving");
         yield return new WaitForSeconds(waitBeforeMovingTime);
 
@@ -86,7 +86,7 @@ public class npcAnimManager : MonoBehaviour
         Debug.Log("NPC stopped moving");
 
         //transform.rotation = Quaternion.Euler(0, 180, 0);
-        transform.rotation = Quaternion.Euler(0, Random.Range(140, 190), 0);
+        transform.rotation = Quaternion.Euler(0, Random.Range(150, 180), 0);
         isMoving = true;
         isWalking = true;
 

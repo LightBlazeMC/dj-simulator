@@ -12,6 +12,10 @@ public class npcManager : MonoBehaviour
     public house_stats scriptHouseStats;
     public jungle_stats scriptJungleStats;
 
+    private bool canShowUI = false;
+
+    public GameObject crowdResetUI;
+
     int a;
     int b;
     int c;
@@ -22,6 +26,8 @@ public class npcManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(uiStart());
+        crowdResetUI.SetActive(false);
         a = scriptTechno.TechnoNPC;
         b = scriptHouse.HouseNPC;
         c = scriptJungle.JungleNPC;
@@ -65,6 +71,7 @@ public class npcManager : MonoBehaviour
             scriptHouse.HouseNPC = 0;
             scriptJungle.JungleNPC = 0;
             Debug.Log("Duplicate NPCs cleared.");
+            StartCoroutine(crowdResetUIPrompt());
             scriptHouse.generateNPC();
             scriptJungle.generateNPC();
             scriptTechno.generateNPC();
@@ -98,8 +105,8 @@ public class npcManager : MonoBehaviour
 
         while (routineRunning)
         {
-            // Wait for random time between 30 and 90 seconds
-            float waitTime = Random.Range(30f, 90f);
+            // Wait for random time between 20 and 40 seconds
+            float waitTime = Random.Range(20f, 40f);
             yield return new WaitForSeconds(waitTime);
 
             // Decide to either create or destroy an NPC
@@ -196,5 +203,22 @@ public class npcManager : MonoBehaviour
     public void StopRandomManipulation()
     {
         routineRunning = false;
+    }
+
+    IEnumerator uiStart()
+    {
+        canShowUI = false;
+        yield return new WaitForSeconds(5f);
+        canShowUI = true;
+    }
+
+    IEnumerator crowdResetUIPrompt()
+    {
+        if (canShowUI)
+        {
+            crowdResetUI.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            crowdResetUI.SetActive(false);
+        }
     }
 }
