@@ -105,8 +105,8 @@ public class npcManager : MonoBehaviour
 
         while (routineRunning)
         {
-            // Wait for random time between 20 and 40 seconds
-            float waitTime = Random.Range(20f, 40f);
+            // Wait for random time between 30 and 50 seconds
+            float waitTime = Random.Range(30f, 50f);
             yield return new WaitForSeconds(waitTime);
 
             // Decide to either create or destroy an NPC
