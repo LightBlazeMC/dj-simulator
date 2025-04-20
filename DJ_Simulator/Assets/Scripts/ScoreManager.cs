@@ -5,7 +5,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int score = 000000;  // Default score value
+    public static int score = 000000;  // Default score value
 
     public TMP_Text scoreText;  // Reference to the TextMeshPro text component
     public TMP_Text pointsListText;
