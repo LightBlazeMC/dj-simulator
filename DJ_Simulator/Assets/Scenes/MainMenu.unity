@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 0}
+  m_AnchoredPosition: {x: -400, y: -100}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72563425
@@ -1282,7 +1282,7 @@ GameObject:
   - component: {fileID: 735693431}
   - component: {fileID: 735693430}
   m_Layer: 5
-  m_Name: starttutorial_btn
+  m_Name: starthardgame_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1305,7 +1305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: -100}
+  m_AnchoredPosition: {x: -400, y: 0}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735693430
@@ -1354,7 +1354,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413491966}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: StartTutorial
+        m_MethodName: StartHardGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: Start Game (Hard)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4e30446f82e14acb84ff1fdc7b5cc67, type: 2}
   m_sharedMaterial: {fileID: -5517776546760148793, guid: e4e30446f82e14acb84ff1fdc7b5cc67, type: 2}

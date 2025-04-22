@@ -14,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ClubKuboid.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ClubKuboid_FP.unity
+    guid: 610b9783123234e6aa4745d5352339ef
+  - enabled: 1
+    path: Assets/Scenes/ClubKuboid_Hard.unity
+    guid: 9094d9afa21f0433da558d9590c91813
+  - enabled: 1
+    path: Assets/Scenes/Cinematic_Hard.unity
+    guid: 846338542640c423ebc77871e2bb5e89
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

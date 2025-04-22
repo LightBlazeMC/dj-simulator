@@ -26,10 +26,16 @@ public class MainMenuManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Cinematic");
     }
 
+    public void StartHardGame()
+    {
+        // Load the game scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Cinematic_Hard");
+    }
+
     public void StartFreeplay()
     {
         // Load the game scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Freeplay");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ClubKuboid_FP");
     }
 
     public void ShowOptions()
