@@ -9,6 +9,8 @@ public class LoadDeck : MonoBehaviour
     private int currentClipIndex = 0;       // Index to track which clip to play
     public deck_btn scriptB;
 
+    public static string currentTrackGenre;
+
     void Update()
     {
         currentClipIndex = held_track.TrackID;
@@ -20,6 +22,7 @@ public class LoadDeck : MonoBehaviour
         if (audioClips.Count > 0)
         {
             currentClipIndex = held_track.TrackID;
+            currentTrackGenre = held_track.genreTag;
             scriptB.hasPlayed = false;
             // Play the first clip
             PlayClip(currentClipIndex);

@@ -78,16 +78,16 @@ public class ScoreManager : MonoBehaviour
     {
         StartCoroutine(AwardPlayTrackPointsCoroutine());
 
-        if (npcManager.popularGenre == "Techno" && held_track.genreTag == "Techno")
+        if (npcManager.popularGenre == "Techno" && LoadDeck.currentTrackGenre == "Techno")
         {
             StartCoroutine(AwardGenrePointsCoroutine());
         }
 
-        if (npcManager.popularGenre == "House" && held_track.genreTag == "House")
+        if (npcManager.popularGenre == "House" && LoadDeck.currentTrackGenre == "House")
         {
             StartCoroutine(AwardGenrePointsCoroutine());
         }
-        if (npcManager.popularGenre == "Jungle" && held_track.genreTag == "Jungle")
+        if (npcManager.popularGenre == "Jungle" && LoadDeck.currentTrackGenre == "Jungle")
         {
             StartCoroutine(AwardGenrePointsCoroutine());
         }
