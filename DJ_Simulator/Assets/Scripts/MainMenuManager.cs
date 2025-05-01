@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ScoreManager.ResetScore();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -23,18 +24,21 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         // Load the game scene
+        ScoreManager.ResetScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Cinematic");
     }
 
     public void StartHardGame()
     {
         // Load the game scene
+        ScoreManager.ResetScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Cinematic_Hard");
     }
 
     public void StartFreeplay()
     {
         // Load the game scene
+        ScoreManager.ResetScore();
         UnityEngine.SceneManagement.SceneManager.LoadScene("ClubKuboid_FP");
     }
 

@@ -9,12 +9,41 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreText;  // Reference to the TextMeshPro text component
     public TMP_Text pointsListText;
-    //public deck_btn scriptA;
 
     public npcManager npcManager;
 
     bool canAward = true;
     bool canAwardGenre = true;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Reset score when starting a new game
+        score = 0;
+        scoreText.text = "Score: " + score.ToString();
+        pointsListText.text = "Do some cool stuff to get points!";
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Only start the play track coroutine if it's not already running
+        if (deck_btn.isPlaying && canAward)
+        {
+            StartCoroutine(AwardPlayTrackPointsCoroutine());
+        }
+
+        // Check for genre match and start coroutine if needed
+        if (deck_btn.isPlaying &&
+            npcManager.popularGenre == LoadDeck.currentTrackGenre &&
+            canAwardGenre &&
+            !string.IsNullOrEmpty(LoadDeck.currentTrackGenre) &&
+            LoadDeck.currentTrackGenre != "None")
+        {
+            StartCoroutine(AwardGenrePointsCoroutine());
+            Debug.Log("Genre match found! Popular: " + npcManager.popularGenre + ", Playing: " + LoadDeck.currentTrackGenre);
+        }
+    }
 
     IEnumerator AwardPlayTrackPointsCoroutine()
     {
@@ -24,19 +53,16 @@ public class ScoreManager : MonoBehaviour
             {
                 canAward = false;
                 score = score + 10;
-                //Debug.Log("Points awarded! Total points: " + score);
                 scoreText.text = "Score: " + score.ToString();
                 pointsListText.text = "You played a track!";
 
                 yield return new WaitForSeconds(10f);
                 canAward = true;
             }
-
             else
             {
                 yield return null;
             }
-
         }
     }
 
@@ -48,48 +74,22 @@ public class ScoreManager : MonoBehaviour
             {
                 canAwardGenre = false;
                 score = score + 250;
-                //Debug.Log("Points awarded! Total points: " + score);
                 scoreText.text = "Score: " + score.ToString();
-                pointsListText.text = "You played a popular genre!";
+                pointsListText.text = "You played " + LoadDeck.currentTrackGenre + " music - the crowd loves it!";
 
                 yield return new WaitForSeconds(8f);
                 canAwardGenre = true;
             }
-
             else
             {
                 yield return null;
             }
-
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // Static method to reset score from anywhere
+    public static void ResetScore()
     {
-        scoreText.text = "Score: " + score.ToString();
-        pointsListText.text = "Do some cool stuff to get points!";
-
-        StartCoroutine(AwardPlayTrackPointsCoroutine());
-        StartCoroutine(AwardGenrePointsCoroutine());
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        StartCoroutine(AwardPlayTrackPointsCoroutine());
-
-        if (npcManager.popularGenre == "Techno" && LoadDeck.currentTrackGenre == "Techno")
-        {
-            StartCoroutine(AwardGenrePointsCoroutine());
-        }
-
-        if (npcManager.popularGenre == "House" && LoadDeck.currentTrackGenre == "House")
-        {
-            StartCoroutine(AwardGenrePointsCoroutine());
-        }
-        if (npcManager.popularGenre == "Jungle" && LoadDeck.currentTrackGenre == "Jungle")
-        {
-            StartCoroutine(AwardGenrePointsCoroutine());
-        }
+        score = 0;
     }
 }
